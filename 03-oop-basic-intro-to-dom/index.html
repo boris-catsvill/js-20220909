@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="./1-column-chart/src/style.css" />
+
+<body>
+  <div id="root"></div>
+</body>
+
+<script type="module">
+  class Component {
+    constructor(title, data) {
+      this.title = title;
+      this.list = data;
+
+      this.render();
+    }
+
+    getList () {
+      return this.list.map(item => {
+        return `<li>${item}</li>`
+      }).join('');
+    }
+
+    getTemplate () {
+      return `
+        <div class="foo">
+          <h1>${this.title}</h1>
+          <ul>
+            ${this.getList()}
+          </ul>
+        </div>
+      `;
+    }
+
+    render () {
+      // DOM
+      const wrapper = document.createElement('div');
+
+      wrapper.innerHTML = this.getTemplate();
+
+      this.element = wrapper;
+    }
+
+    remove () {
+
+    }
+
+    foo () {
+
+    }
+  }
+
+  const obj1 = new Component('some title', ['a', 'b', 'c']);
+  const obj2 = new Component('foo bar', ['1', '2', '3']);
+
+  const rootElem = document.querySelector('#root');
+
+  rootElem.append(obj1.element);
+  rootElem.append(obj2.element);
+</script>
