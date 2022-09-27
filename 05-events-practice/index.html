@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<body>
+
+
+<div id="root"></div>
+
+</body>
+
+<script>
+  class Component {
+    constructor(title) {
+      this.myTitle = title;
+
+      this.render();
+      this.initListeners();
+    }
+
+    render () {
+      const wrapper = document.createElement('div');
+
+      wrapper.innerHTML = `
+        <div>
+          <h1>${this.myTitle}</h1>
+          <button id="btn">Click me maybe!</button>
+        </div>
+      `;
+
+      this.element = wrapper;
+    }
+
+    onClick = (event) => {
+      console.error(this.myTitle);
+      console.error(event);
+    }
+
+    initListeners () {
+      const btn = this.element.querySelector('#btn');
+
+      btn.addEventListener('click', this.onClick);
+    }
+
+    destroy () {
+      const btn = this.element.querySelector('#btn');
+
+      btn.removeEventListener('click', this.onClick);
+    }
+  }
+
+  const obj = new Component('hello event listeners');
+
+  root.append(obj.element);
+
+  obj.destroy();
+</script>
+

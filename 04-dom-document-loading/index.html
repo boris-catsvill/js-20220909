@@ -6,43 +6,5 @@
 </body>
 
 <script>
-  class BaseComponent {
-    static color = 'green';
 
-    render () {
-      // ...logic
-    }
-
-    remove () {
-      // ...logic
-    }
-
-    destroy () {
-      // ...logic
-    }
-  }
-
-  class Component extends BaseComponent {
-    constructor(title = '') {
-      super();
-      this.title = title;
-
-      // return this;
-    }
-
-    getTitle () {
-      return this.title;
-    }
-  }
-
-  const obj1 = new Component('foo');
-  // ???
-  const obj2 = new Component('bar');
-  const obj3 = new Component('baz');
-
-  console.error(obj1);
-  console.error(obj2);
-  console.error(obj3);
-  console.error(Component);
-  console.error(Component.color);
 </script>
