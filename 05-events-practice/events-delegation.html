@@ -51,7 +51,6 @@
   </table>
   <script>
     fruits.addEventListener('click', event => {
-      console.error(event);
       if (event.target.closest('td')) {
         console.error(`%c Fruit: ${event.target.textContent}`, 'font-size: 24px;');
       }

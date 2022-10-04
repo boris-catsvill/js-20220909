@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<body>
+  <div id="root"></div>
+</body>
+
+<script type="module">
+  function loadData() {
+    fetch('https://course-js.javascript.ru/api/dashboard/orders?from=2022-08-31T18%3A41%3A19.707Z&to=2022-09-30T18%3A41%3A19.707Z') // Promise
+      .then(response => {
+        return response.json() // x sec
+      })
+      .then(json => {
+        console.log(json) // x sec
+        const { accounts } = json;
+        const firstAccountId = accounts[0];
+
+        fetch('...')
+          .then()
+          .then(data => {
+            const info = data;
+
+            fetch('...')
+              .then(() => {
+                fetch('...')
+                  .then()
+                  .then()
+              })
+              .then()
+          })
+
+      })
+      .catch(error => {
+        console.error(error); // x sec
+      });
+  }
+
+  const controller = new AbortController();
+
+  async function fetchData () {
+    try {
+      const url = 'https://course-js.javascript.ru/api/dashboard/orders?from=2022-08-31T18%3A41%3A19.707Z&to=2022-09-30T18%3A41%3A19.707Z';
+      const response = await fetch(url, {
+        signal: controller.signal
+      }); // Pause
+      const data = await response.json();
+      controller.abort();
+      console.error(response);
+      console.error(data);
+      return data;
+    } catch (error) {
+      console.error(`Fetch error: ${error.message}`);
+    }
+  }
+
+  fetchData()
+    .then(data => {
+      console.error(data);
+    })
+
+
+  // console.error(1);
+  //
+  // setTimeout(() => {
+  //   // logic <remove>
+  // }, 3000);
+  //
+  // console.error(2);
+</script>
